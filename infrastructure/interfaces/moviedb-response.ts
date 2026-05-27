@@ -1,4 +1,4 @@
-export interface MovieDBResponse {
+export interface MovieDBMoviesResponse {
   dates: Dates
   page: number
   results: Result[]
@@ -27,4 +27,11 @@ export interface Result {
   video: boolean
   vote_average: number
   vote_count: number
+}
+
+export enum OriginalLanguage {
+  En = 'en',
+  Th = 'th',
+  Tl = 'tl',
+  Zh = 'zh'
 }

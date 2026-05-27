@@ -2,16 +2,15 @@ import { movieApi } from '@/core/api/movie-api'
 import { MovieDBMoviesResponse } from '@/infrastructure/interfaces/moviedb-response'
 import { MovieMapper } from '@/infrastructure/mappers/movie.mapper'
 
-export const NowPlayingAction = async () => {
+export const ratedMoviesAction = async () => {
   try {
-    //URL final sera: baseURL+ '/now_playing' + params (api_key, language)
-    const { data } = await movieApi.get<MovieDBMoviesResponse>('/now_playing')
+    const { data } = await movieApi.get<MovieDBMoviesResponse>('/top_rated')
 
     const movies = data.results.map(MovieMapper.fromTheMovieDBToMovie)
 
     return movies
   } catch (error) {
     console.log(error)
-    throw 'No se pudieron cargar las peliculas en cartelera'
+    throw 'Cannot load rated movies'
   }
 }
